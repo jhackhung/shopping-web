@@ -1,0 +1,9 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+  "babelOptions": { // <== Add This
+  "configFile": "./babel.config.js" // <== Add This
+  } // <== Add This
+  }
+  // … other ESLint configurations
+ }
