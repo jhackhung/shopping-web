@@ -4,6 +4,10 @@
   "babelOptions": { // <== Add This
   "configFile": "./babel.config.js" // <== Add This
   } // <== Add This
-  }
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ]
   // … other ESLint configurations
  }
