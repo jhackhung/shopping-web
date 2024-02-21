@@ -1,13 +1,9 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "vue-eslint-parser",
   "parserOptions": {
-  "babelOptions": { // <== Add This
-  "configFile": "./babel.config.js" // <== Add This
-  } // <== Add This
-  },
-  "extends": [
-    "plugin:vue/essential",
-    "eslint:recommended"
-  ]
-  // … other ESLint configurations
- }
+    "parser": "@babel/eslint-parser",
+    "babelOptions": {
+      "configFile": "./babel.config.js"
+    }
+  }
+}

@@ -32,9 +32,12 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "vue-eslint-parser"
     },
-    "rules": {}
+    "rules": {},
+    "plugins": [
+      "vue"
+    ]
   },
   "browserslist": [
     "> 1%",
