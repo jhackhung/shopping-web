@@ -6,20 +6,27 @@
         <nav>
             <ul>
                 <li>
-                    <base-button>
-                        <router-link to="/products" class="mode">商品</router-link>
-                    </base-button>
+
+                    <router-link to="/products" class="mode">商品</router-link>
+
                 </li>
                 <li>
-                    <base-button>
-                        <router-link to="/cart" class="mode">購物車</router-link>
-                    </base-button>
+                    <router-link to="/cart" class="mode">購物車</router-link>
+                    <base-badge>{{ cartquantity }}</base-badge>
                 </li>
             </ul>
         </nav>
     </header>
 </template>
-
+<script>
+export default {
+    computed: {
+        cartquantity() {
+            return this.$store.getters['cart/quantity'];
+        }
+    }
+}
+</script>
 <style scoped>
 header {
     height: 60px;
