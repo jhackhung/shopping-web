@@ -7,10 +7,10 @@
 <style scoped>
 .base-badge {
     display: inline-block;
-    padding: 0.15rem 1.25rem;
+    padding: 0.15rem 0.85rem;
     background-color: #ccc;
     color: #292929;
-    margin: 0 0.75rem;
+    margin: 0.25rem 0.75rem;
     border-radius: 30px;
 }
 </style>
