@@ -7,17 +7,26 @@
             <div class="product__text">
                 <h3>{{ name }}</h3>
                 <h4>${{ price }}</h4>
-                <p>{{ description }}</p>
+            </div>
+            <div>
+                <base-badge v-for="cgs in categories">{{ cgs }}</base-badge>
             </div>
         </div>
         <div class="product__actions">
-            <button>Add to Cart</button>
+            <base-button @click="addToCart">加入購物車</base-button>
         </div>
     </li>
 </template>
 <script>
 export default {
-    props: ['img', 'name', 'rate', 'price', 'categories']
+    props: ['id', 'img', 'name', 'rate', 'price', 'categories'],
+    methods: {
+        addToCart() {
+            this.$store.dispatch('cart/addProdToCart', {
+                id: this.id,
+            })
+        }
+    }
 }
 </script>
 <style scoped>
@@ -52,9 +61,10 @@ li {
 
 .product__actions {
     text-align: center; 
+    font-weight: 700;
 }
 
-button {
+/* button {
     margin: 1rem auto;
     font: inherit;
     cursor: pointer;
@@ -72,5 +82,5 @@ button:active {
     background-color: #363636;
     border-color: #363636;
     color: #fff;
-}
+} */
 </style>
