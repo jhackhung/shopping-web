@@ -17,7 +17,7 @@
                     <base-badge>{{ cartquantity }}</base-badge>
                     <div v-show="isCartPreviewVisible" class="cart-preview">
                         <p v-if="cartquantity === 0">購物車內目前沒有商品</p>
-                        <ul v-else >
+                        <ul v-else>
                             <li v-for="item in cartItems" :key="item.id">
                                 <img :src="item.img" :alt="item.name" class="preview-img">
                                 <div>
@@ -27,6 +27,13 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li>
+                    <router-link to="/login">登入</router-link>
+                    <!-- <router-link>登出</router-link> -->
+                </li>
+                <li>
+                    <router-link to="/signup">註冊</router-link>
                 </li>
             </ul>
         </nav>
@@ -146,4 +153,5 @@ a {
 .mode:active,
 .mode.router-link-active {
     border-color: #333;
-}</style>
+}
+</style>
