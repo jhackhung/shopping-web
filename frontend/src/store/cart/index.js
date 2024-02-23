@@ -22,16 +22,16 @@ export default {
     addProdToCart(state, payload) {
       const productData = payload;
       const productInCartIndex = state.items.findIndex(
-        (ci) => ci.productId === productData.id
+        (ci) => ci.id === productData.id
       );
 
       if (productInCartIndex >= 0) {
         state.items[productInCartIndex].qty++;
       } else {
         const newItem = {
-          productId: productData.id,
+          id: productData.id,
           name: productData.name,
-          image: productData.img,
+          img: productData.img,
           price: productData.price,
           rate: productData.rate,
           categories: productData.categories,

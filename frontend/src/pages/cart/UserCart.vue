@@ -9,6 +9,7 @@
             <base-button class="checkout-btn">結帳</base-button>
             <ul class="cart-items">
                 <li v-for="item in cart" :key="item.id" class="cart-item">
+                    <img :src="item.img" :alt="item.name" class="item-img">
                     <div class="item-details">
                         <h2>{{ item.name }}</h2>
                         <p class="item-price">{{ item.price }}元</p>
@@ -75,7 +76,8 @@ export default {
 
 .cart-items {
     list-style-type: none;
-    padding: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
 }
 
 .cart-item {
@@ -84,6 +86,13 @@ export default {
     margin-bottom: 10px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+}
+
+.item-img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    display: inline-block;
 }
 
 .item-details {
