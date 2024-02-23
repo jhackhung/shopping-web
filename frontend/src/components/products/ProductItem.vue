@@ -6,10 +6,10 @@
             </div>
             <div class="product__text">
                 <h3>{{ name }}</h3>
-                <h4>${{ price }}</h4>
-            </div>
-            <div>
-                <base-badge v-for="cgs in categories">{{ cgs }}</base-badge>
+                <h4>單價：${{ price }}</h4>
+                <div class="product__cgs">
+                    <base-badge v-for="cgs in categories">{{ cgs }}</base-badge>
+                </div>
             </div>
         </div>
         <div class="product__actions">
@@ -51,12 +51,21 @@ li {
     object-fit: cover;
 }
 
+.product__text {
+    width: 100%;
+    padding: 0.5rem;
+}
 .product__text h3 {
     margin: 0 0 0.5rem 0;
 }
 
 .product__text h4 {
     margin: 0;
+}
+
+.product__cgs {
+    display: flex;
+    margin: 10px 0;
 }
 
 .product__actions {
