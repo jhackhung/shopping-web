@@ -1,5 +1,4 @@
 const dotenv = require("dotenv");
-const mysql = require("mysql");
 
 dotenv.config({ path: "./config.env" });
 
@@ -11,17 +10,16 @@ process.on("uncaughtException", (err) => {
 
 const app = require("./app");
 
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-});
+const db = require("./models/index");
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-})
-
+(async () => {
+  try {
+    await db.sync({ force: true });
+    console.log("Database synced successfully");
+  } catch (err) {
+    console.log("Error syncing database:", err);
+  }
+})();
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
