@@ -2,45 +2,66 @@ export default {
   namespaced: true,
   state() {
     return {
-      products: [
-        {
-          "id": "1",
-          "img": "https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
-          "name": "優質短袖白T",
-          "rate": 0,
-          "price": 500,
-          "categories": ['T-shirt'],
-        },
-        {
-          "id": "2",
-          "img": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-          "name": "骷髏手短黑T",
-          "rate": 0,
-          "price": 790,
-          "categories": ['T-shirt'],
-        },
-        {
-          "id": "3",
-          "img": "https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80",
-          "name": "超時尚牛仔褲",
-          "rate": 0,
-          "price": 1200,
-          "categories": ['Jeans', 'Pants'],
-        },
-        {
-          "id": "4",
-          "img": "https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-          "name": "質感褐色系大衣",
-          "rate": 0,
-          "price": 2300,
-          "categories": ['Coat'],
-        }
-      ],
+      products: [],
+      lastFetch: null,
     };
   },
   getters: {
     products(state) {
       return state.products;
     },
+    hasProducts(state) {
+      return state.products && state.products.length > 0;
+    },
+    shouldUpdate(state) {
+      const lastFetch = state.lastFetch;
+      if(!lastFetch) {
+          return true;
+      }
+      const currentTimeStamp = new Date().getTime();
+      return (currentTimeStamp - lastFetch) / 1000 > 60;
+  }
   },
+  mutations: {
+    setProducts(state, payload) {
+      state.products = payload;
+    },
+    setFetchTimestamp(state) {
+      state.lastFetch = new Date().getTime();
+    }
+  },
+  actions: {
+    async loadProducts(context, payload) {
+      if(!payload.forceRefresh && !context.getters.shouldUpdate) {
+        return;
+      }
+
+      const response = await fetch('http://127.0.0.1:3000/api/v1/prods');
+      const responseData = await response.json();
+
+      if(!response.ok) {
+        const error = new Error(responseData.message || 'Failed to fetch!');
+        throw error;
+      }
+
+      const products = [];
+
+      for(const key of responseData.data.products) {
+        const product = {
+          id: key.id,
+          name: key.name,
+          img: key.img,
+          description: key.description,
+          price: key.price,
+          rate: key.rate,
+          categories: key.categories,
+        };
+
+        products.push(product);
+      }
+
+      context.commit('setProducts', products);
+      context.commit('setFetchTimestamp');
+    }
+  }
 };

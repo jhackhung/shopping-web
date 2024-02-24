@@ -14,7 +14,7 @@
                     <router-link to="/cart" class="mode">
                         <img class="cart-img" src="../../assets/shopping-cart.png" alt="shopping-cart">
                     </router-link>
-                    <base-badge>{{ cartquantity }}</base-badge>
+                    <base-badge class="badge">{{ cartquantity }}</base-badge>
                     <div v-show="isCartPreviewVisible" class="cart-preview">
                         <p v-if="cartquantity === 0">購物車內目前沒有商品</p>
                         <ul v-else>
@@ -101,6 +101,10 @@ a {
     padding-bottom: 0.25rem;
 }
 
+.badge {
+    cursor: default;
+}
+
 .cart-img {
     width: 25px;
     height: 25px;
@@ -117,7 +121,7 @@ a {
 .cart-preview {
     position: absolute;
     top: 50px;
-    right: 250px;
+    right: 330px;
     background-color: white;
     border: 1px solid #ccc;
     padding: 10px;
@@ -125,6 +129,7 @@ a {
     flex-direction: column;
     max-height: 300px;
     overflow-y: auto;
+    z-index: 100;
 }
 
 .cart-preview ul {

@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-    props: ['id', 'img', 'name', 'rate', 'price', 'categories'],
+    props: ['id', 'img', 'name', 'rate', 'description', 'price', 'categories'],
     methods: {
         addToCart() {
             this.$store.dispatch('cart/addProdToCart', {
@@ -65,7 +65,7 @@ li {
 
 .product__cgs {
     display: flex;
-    margin: 10px 0;
+    margin-top: 4rem;
 }
 
 .product__actions {

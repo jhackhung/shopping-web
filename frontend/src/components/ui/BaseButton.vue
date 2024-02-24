@@ -45,6 +45,7 @@ button {
     background-color: #484848;
     color: #fff;
     border: none;
+    padding: 10px;
 }
 
 .square:hover,

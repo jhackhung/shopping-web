@@ -14,7 +14,8 @@ const db = require("./models/index");
 
 (async () => {
   try {
-    await db.sync({ force: true });
+    // await db.sync({ force: true });
+    await db.sync();
     console.log("Database synced successfully");
   } catch (err) {
     console.log("Error syncing database:", err);
