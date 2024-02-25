@@ -1,7 +1,7 @@
 <template>
     <section>
         <section>
-            <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
+            <base-dialog :show="!!error" title="錯誤!" @close="handleError">
                 <p>{{ error }}</p>
             </base-dialog>
         </section>
