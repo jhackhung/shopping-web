@@ -39,6 +39,7 @@ export default {
     padding: 40px 135px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
 h1 {
