@@ -16,13 +16,14 @@
                     </router-link>
                     <base-badge class="badge">{{ cartquantity }}</base-badge>
                     <div v-show="isCartPreviewVisible" class="cart-preview">
-                        <p v-if="cartquantity === 0">購物車內目前沒有商品</p>
+                        <p v-if="cartquantity === 0" class="no-item-content">購物車內目前沒有商品</p>
                         <ul v-else>
                             <li v-for="item in cartItems" :key="item.id">
                                 <img :src="item.img" :alt="item.name" class="preview-img">
                                 <div>
-                                    <h3>{{ item.name }} - ${{ item.price }}</h3>
-                                    <p>{{ item.qty }}</p>
+                                    <p class="nav-shopping-cart-title">{{ item.name }}</p>
+                                    <p class="nav-shopping-cart-price">NT${{ item.price }}</p>
+                                    <!-- <p>{{ item.qty }}</p> -->
                                 </div>
                             </li>
                         </ul>
@@ -124,12 +125,18 @@ a {
     right: 330px;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 12px;
+    width: 340px;
     display: none;
     flex-direction: column;
     max-height: 300px;
     overflow-y: auto;
     z-index: 100;
+}
+
+.no-item-content {
+    text-align: center;
+    color: #999;
 }
 
 .cart-preview ul {
@@ -142,12 +149,28 @@ a {
 .cart-preview li {
     margin: 10px;
     display: flex;
-    align-items: center;
+    position: relative;
 }
 
-.cart-preview li h3,
 .cart-preview li p {
     margin: 0;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.nav-shopping-cart-title {
+    height: 54px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4a4e5c;
+}
+
+.nav-shopping-cart-price {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
 }
 
 .cart-container:hover .cart-preview {
