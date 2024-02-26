@@ -4,7 +4,7 @@
         <form @submit.prevent="login">
             <div class="form-group">
                 <!-- <label for="email">電子郵件</label> -->
-                <input type="email" id="email" placeholder="電子郵件" v-model="email" required>
+                <input type="text" id="user" placeholder="使用者" v-model="user" required>
             </div>
             <div class="form-group">
                 <!-- <label for="password">密碼</label> -->
@@ -19,14 +19,19 @@
 export default {
     data() {
         return {
-            email: '',
+            user: '',
             password: ''
         };
     },
     methods: {
         login() {
             // Perform login logic here
-            console.log('Logging in...');
+            const loginData = {
+                user: this.user,
+                password: this.password
+            };
+            // login error. username undefined
+            this.$store.dispatch('auth/login', loginData);
         }
     }
 };
@@ -56,7 +61,7 @@ h1 {
     margin-bottom: 5px;
 } */
 
-input[type="email"],
+input[type="text"],
 input[type="password"] {
     width: 100%;
     margin-bottom: 1rem;
@@ -66,7 +71,7 @@ input[type="password"] {
     background-color: #f6f6f6;
 }
 
-input[type="email"]:focus,
+input[type="text"]:focus,
 input[type="password"]:focus {
     outline: none;
     background-color: #fff;

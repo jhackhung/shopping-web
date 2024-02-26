@@ -47,7 +47,7 @@ export default {
             try {
                 await this.$store.dispatch('prods/loadProducts', { forceRefresh: refresh });
             } catch (err) {
-                this.err = err.message || 'Failed to fetch products.';
+                this.error = err.message || 'Failed to fetch products.';
             }
             this.isLoading = false;
         },
