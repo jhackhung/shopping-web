@@ -20,11 +20,20 @@
 <script>
 export default {
     props: ['id', 'img', 'name', 'rate', 'description', 'price', 'categories'],
+    computed: {
+        isLoggedIn() {
+            return this.$store.getters['auth/isLoggedIn'];
+        }
+    },
     methods: {
         addToCart() {
-            this.$store.dispatch('cart/addProdToCart', {
-                id: this.id,
-            })
+            if (!this.isLoggedIn) {
+                this.$router.push({ 'path': '/login', query: { redirectToProductList: true } });
+            } else {
+                this.$store.dispatch('cart/addProdToCart', {
+                    id: this.id,
+                })
+            }
         }
     }
 }
@@ -55,6 +64,7 @@ li {
     width: 100%;
     padding: 0.5rem;
 }
+
 .product__text h3 {
     margin: 0 0 0.5rem 0;
 }
@@ -69,7 +79,7 @@ li {
 }
 
 .product__actions {
-    text-align: center; 
+    text-align: center;
     font-weight: 700;
 }
 
