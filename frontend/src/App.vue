@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap');
+
 * {
   box-sizing: border-box;
 }
