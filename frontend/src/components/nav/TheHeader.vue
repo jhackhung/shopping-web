@@ -1,17 +1,18 @@
 <template>
     <header>
         <h1>
-            <router-link to="/">Shop</router-link>
+            <router-link to="/" class="logo">
+                <img src="../../assets/cozyFit.png" alt="icon">
+                <p>CozyFit</p>
+            </router-link>
         </h1>
         <nav>
             <ul>
                 <li>
-
-                    <router-link to="/products" class="mode">商品</router-link>
-
+                    <router-link to="/products" class="mode mode-prod">商品</router-link>
                 </li>
                 <li class="cart-container" @mouseover="showCartPreview" @mouseleave="hideCartPreview">
-                    <router-link to="/cart" class="mode">
+                    <router-link to="/cart" class="mode mode-cart">
                         <img class="cart-img" src="../../assets/shopping-cart.png" alt="shopping-cart">
                     </router-link>
                     <base-badge class="badge">{{ cartquantity }}</base-badge>
@@ -23,17 +24,19 @@
                                 <div>
                                     <p class="nav-shopping-cart-title">{{ item.name }}</p>
                                     <p class="nav-shopping-cart-price">NT${{ item.price }}</p>
-                                    <!-- <p>{{ item.qty }}</p> -->
+                                    <p>{{ item.qty }}</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li>
+                <li v-if="!isLoggedIn">
                     <router-link to="/login">登入</router-link>
-                    <!-- <router-link>登出</router-link> -->
                 </li>
-                <li>
+                <li v-else>
+                    <router-link :to="{ path: '/login', query: { logout: true } }" tag="button" @click.native="logout">登出</router-link>
+                </li>
+                <li v-if="!isLoggedIn">
                     <router-link to="/signup">註冊</router-link>
                 </li>
             </ul>
@@ -42,20 +45,29 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            isCartPreviewVisible: false,
+        }
+    },
     computed: {
         cartquantity() {
             return this.$store.getters['cart/quantity'];
         },
         cartItems() {
             return this.$store.getters['cart/products'];
-        }
-    },
-    data() {
-        return {
-            isCartPreviewVisible: false,
+        },
+        isLoggedIn() {
+            return this.$store.getters['auth/isLoggedIn'];
         }
     },
     methods: {
+        logout() {
+            if(this.cartquantity > 0) {
+                this.$store.dispatch('cart/clearCart');
+            }
+            this.$store.dispatch('auth/logout');
+        },
         showCartPreview() {
             this.isCartPreviewVisible = true;
         },
@@ -102,7 +114,22 @@ a {
     padding-bottom: 0.25rem;
 }
 
+.logo {
+    font: 2rem 'Madimi One', cursive;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
 .badge {
+    position: absolute;
+    right: 20.25rem;
+    top: 0.9rem;
     cursor: default;
 }
 
@@ -177,6 +204,17 @@ a {
     display: block;
 }
 
+.mode-prod {
+    position: absolute;
+    right: 27rem;
+    top: 1.2rem;
+}
+
+.mode-cart {
+    position: absolute;
+    right: 24rem;
+    top: 0.75rem;
+}
 .mode:hover,
 .mode:active,
 .mode.router-link-active {

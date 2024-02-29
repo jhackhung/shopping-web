@@ -1,8 +1,8 @@
 <template>
     <div class="signup-container">
-        <base-dialog :show="!!error" title="錯誤!" @close="handleError">
-            <p>{{ error }}</p>
-        </base-dialog>
+        <div v-if="isLoading">
+            <base-spinner></base-spinner>
+        </div>
         <h1>註冊</h1>
         <form @submit.prevent="signUp">
             <div class="form-group" :class="{ invalid: !username.isValid }" @blur="clearValidity(username)"
@@ -22,6 +22,11 @@
             </div>
             <button type="submit" class="signup-submit">註冊</button>
         </form>
+        <div v-if="message">
+            <base-dialog :show="true" :title="title" @close="handleMessage">
+                {{ message }}
+            </base-dialog>
+        </div>
     </div>
 </template>
   
@@ -41,17 +46,16 @@ export default {
                 val: '',
                 isValid: true
             },
-            formIsValid: true
+            formIsValid: true,
+            isLoading: false,
+            title: '',
+            message: ''
         };
     },
-    computed: {
-        error() {
-            return this.$store.getters['auth/error'];
-        }
-    },
     methods: {
-        handleError() {
-            this.$store.commit('auth/clearError');
+        handleMessage() {
+            this.title = '';
+            this.message = '';
         },
         clearValidity(field) {
             field.isValid = !!field.val.trim();
@@ -79,18 +83,37 @@ export default {
                 this.formIsValid = false;
             }
         },
-        signUp() {
-            this.validateForm();
+        async signUp() {
+            try {
+                this.isLoading = true;
+                this.validateForm();
 
-            if (!this.formIsValid) {
-                return;
+                if (!this.formIsValid) {
+                    this.isLoading = false;
+                    return;
+                }
+                const signUpData = {
+                    username: this.username.val,
+                    email: this.email.val,
+                    password: this.password.val
+                };
+                await this.$store.dispatch('auth/signup', signUpData);
+                this.$router.push({ path: '/login', query: { signup: true }});
+                this.isLoading = false;
+            } catch(error) {
+                if(error.message === 'Username is already taken!') {
+                    this.title = '註冊錯誤';
+                    this.message = '使用者已存在';
+                } else if (error.message === 'Email is already in use!') {
+                    this.title = '註冊錯誤';
+                    this.message = '電子郵件已存在';
+                } else {
+                    this.title = '錯誤';
+                    this.message = error.message;
+                }
+                this.isLoading = false;
             }
-            const signUpData = {
-                username: this.username.val,
-                email: this.email.val,
-                password: this.password.val
-            };
-            this.$store.dispatch('auth/signup', signUpData);
+            
         }
     }
 };
@@ -107,6 +130,7 @@ export default {
 }
 
 h1 {
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -161,4 +185,5 @@ button:hover {
     text-align: center;
     color: red;
     margin: 0;
-}</style>
+}
+</style>

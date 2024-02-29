@@ -19,6 +19,7 @@ exports.signup = catchAsync(async (req, res, next) => {
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
     });
+    await user.save();
 
     if (req.body.roles) {
       const roles = await Role.findAll({
@@ -29,13 +30,13 @@ exports.signup = catchAsync(async (req, res, next) => {
         },
       });
       await user.setRoles(roles);
-      res.status(200).json({
+      res.status(201).json({
         status: "success",
         message: "User was registered successfully!",
       });
     } else {
       await user.setRoles([1]);
-      res.status(200).json({
+      res.status(201).json({
         status: "success",
         message: "User was registered successfully!",
       });
