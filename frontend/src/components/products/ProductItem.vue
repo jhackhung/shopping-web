@@ -40,6 +40,8 @@ export default {
 </script>
 <style scoped>
 li {
+    width: 25rem;
+    height: 20rem;
     margin: 1.5rem auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     padding: 1rem;
@@ -57,6 +59,7 @@ li {
 .product__image img {
     height: 10rem;
     width: 10rem;
+    border-radius: 15px;
     object-fit: cover;
 }
 
@@ -79,6 +82,7 @@ li {
 }
 
 .product__actions {
+    margin-top: 2rem;
     text-align: center;
     font-weight: 700;
 }

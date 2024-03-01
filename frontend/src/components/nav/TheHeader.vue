@@ -23,8 +23,8 @@
                                 <img :src="item.img" :alt="item.name" class="preview-img">
                                 <div>
                                     <p class="nav-shopping-cart-title">{{ item.name }}</p>
-                                    <p class="nav-shopping-cart-price">NT${{ item.price }}</p>
-                                    <p>{{ item.qty }}</p>
+                                    <p class="nav-shopping-cart-price">NT${{ item.price }}  <strong>x{{ item.qty }}</strong></p>
+                                    <i class="remove-icon" @click="removeFromCart(item.id)"></i>
                                 </div>
                             </li>
                         </ul>
@@ -74,6 +74,11 @@ export default {
         hideCartPreview() {
             this.isCartPreviewVisible = false;
         },
+        removeFromCart(id) {
+            this.$store.dispatch('cart/removeFromCart', {
+                id
+            });
+        }
     }
 
 }
@@ -188,7 +193,7 @@ a {
 }
 
 .nav-shopping-cart-title {
-    height: 54px;
+    height: 35px;
     font-size: 15px;
     font-weight: 700;
     color: #4a4e5c;
@@ -198,6 +203,17 @@ a {
     font-size: 1.2rem;
     line-height: 1.5;
     color: #333;
+}
+
+.remove-icon {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    width: 20px;
+    height: 20px;
+    background: url(../../assets/remove.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 
 .cart-container:hover .cart-preview {

@@ -12,8 +12,8 @@
                     <img :src="item.img" :alt="item.name" class="item-img">
                     <div class="item-details">
                         <h2>{{ item.name }}</h2>
-                        <p class="item-price">{{ item.price }}元</p>
-                        <p class="item-quantity">{{ item.qty }}</p>
+                        <p class="item-price">NT$ {{ item.price }}元</p>
+                        <p class="item-quantity">數量： {{ item.qty }}</p>
                     </div>
                     <div class="remove-btn-container">
                         <button class="remove-btn" @click="removeFromCart(item.id)">移除</button>

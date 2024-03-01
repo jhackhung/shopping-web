@@ -1,14 +1,14 @@
 <template>
-    <section>
+    <section class="product-list">
         <section>
             <base-dialog :show="!!error" title="錯誤!" @close="handleError">
                 <p>{{ error }}</p>
             </base-dialog>
         </section>
         <section>
-            <div class="controls">
+            <!-- <div class="controls">
                 <base-button mode="square" @click="loadProducts(true)">重新整理</base-button>
-            </div>
+            </div> -->
             <div v-if="isLoading">
                 <base-spinner></base-spinner>
             </div>
@@ -64,9 +64,18 @@ export default {
 <style scoped>
 ul {
     list-style: none;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0;
     max-width: 30rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(25rem, 1fr)); /* Two columns with minimum width of 15rem */
+    gap: 1rem; /* Gap between grid items */
+    justify-content: center; /* Center the grid horizontally */
+}
+
+.product-list {
+    margin: 2rem auto;
+    max-width: 40rem;
 }
 
 .no-product {
