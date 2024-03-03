@@ -7,9 +7,10 @@
             <div class="product__text">
                 <h3>{{ name }}</h3>
                 <h4>單價：${{ price }}</h4>
-                <div class="product__cgs">
+                <!-- <div class="product__cgs">
                     <base-badge v-for="cgs in categories">{{ cgs }}</base-badge>
-                </div>
+                </div> -->
+                <p>{{ description }}</p>
             </div>
         </div>
         <div class="product__actions">
@@ -77,7 +78,9 @@ li {
 }
 
 .product__cgs {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
     margin-top: 4rem;
 }
 
