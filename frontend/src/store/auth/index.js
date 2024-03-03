@@ -30,6 +30,7 @@ export default {
         const responseData = response.data;
 
         localStorage.setItem("token", responseData.accessToken);
+        localStorage.setItem("user", responseData.username);
 
         context.commit("controlLoggedIn");
       } catch (error) {
@@ -66,6 +67,7 @@ export default {
     },
     logout(context) {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
       context.commit("controlLoggedIn");
     },
   },

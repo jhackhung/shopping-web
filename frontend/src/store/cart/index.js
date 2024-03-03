@@ -1,3 +1,7 @@
+import axios from "axios";
+
+const API_URL = "http://localhost:3000/api/v1/checkout";
+
 export default {
   namespaced: true,
   state() {
@@ -70,6 +74,30 @@ export default {
     },
     clearCart(context) {
       context.commit("clearCart");
-    }
+    },
+    async checkout(context, payload) {
+      const checkout = {
+        user: payload.user,
+        products: payload.products,
+        total: payload.total,
+        shipping_address: payload.shipping_address,
+        payment_method: payload.payment_method,
+      };
+
+      try {
+        await axios.post(API_URL, checkout);
+        context.commit("clearCart");
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          throw new Error(error.response.data.message);
+        } else {
+          throw new Error("Failed to checkout. Please try again later.");
+        }
+      }
+    },
   },
 };
