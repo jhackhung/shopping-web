@@ -23,6 +23,10 @@ const Checkout = sequelize.define("Checkout", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  shipping_address: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   status: {
     type: DataTypes.STRING,
     allowNull: false,

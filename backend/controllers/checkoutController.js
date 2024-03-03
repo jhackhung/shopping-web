@@ -9,6 +9,7 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
       user: req.body.user,
       products: req.body.products,
       total: req.body.total,
+      shipping_address: req.body.shipping_address,
       payment_method: req.body.payment_method,
       status: req.body.status,
     });

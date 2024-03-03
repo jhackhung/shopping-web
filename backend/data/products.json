@@ -30,5 +30,117 @@
     "description": "這是一件質感褐色系大衣，適合各種場合穿著，質料舒適，適合冬天穿著。",
     "price": 2300,
     "categories": ["Coat"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1514642837906-76ed4698ec34?q=80&w=1859&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "name": "舒適休閒帽子",
+    "rate": 0,
+    "description": "這是一頂舒適休閒帽子，適合各種場合穿著，質料舒適，適合春夏季節穿著。",
+    "price": 300,
+    "categories": ["Hat"]
+  },
+  {
+    "img": "https://plus.unsplash.com/premium_photo-1673384389943-d891095cd331?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "name": "時尚背包",
+    "rate": 0,
+    "description": "這是一個時尚背包，適合各種場合使用，質料耐用，適合日常使用。",
+    "price": 800,
+    "categories": ["Bag"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1512428559087-5601f8ebf401?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚皮靴",
+    "rate": 0,
+    "description": "這是一雙時尚的皮靴，適合各種場合穿著，質料優質，適合秋冬季節穿著。",
+    "price": 1500,
+    "categories": ["Shoes", "Boots"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1584371137522-4c4e1f50ec40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚連身裙",
+    "rate": 0,
+    "description": "這是一條時尚的連身裙，適合各種場合穿著，質料舒適，適合春夏季節穿著。",
+    "price": 900,
+    "categories": ["Dress"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1611080377234-f0148e28b9b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚腰帶",
+    "rate": 0,
+    "description": "這是一條時尚的腰帶，適合各種場合穿著，質料舒適，適合搭配裙子或褲子。",
+    "price": 200,
+    "categories": ["Accessories", "Belt"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1611084875925-3f7c204b4873?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚手錶",
+    "rate": 0,
+    "description": "這是一隻時尚的手錶，適合各種場合佩戴，質料精良，適合搭配各種服飾。",
+    "price": 600,
+    "categories": ["Accessories", "Watch"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1581291516602-eb7f6e1432b8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚耳環",
+    "rate": 0,
+    "description": "這是一對時尚的耳環，適合各種場合佩戴，質料精良，適合搭配各種服飾。",
+    "price": 300,
+    "categories": ["Accessories", "Earrings"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1556905055-eec973536f06?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "運動短褲",
+    "rate": 0,
+    "description": "這是一條舒適的運動短褲，適合各種運動場合穿著，質料透氣，適合夏天穿著。",
+    "price": 350,
+    "categories": ["Shorts", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "name": "運動外套",
+    "rate": 0,
+    "description": "這是一件時尚的運動外套，適合各種運動場合穿著，質料舒適，適合春秋季節穿著。",
+    "price": 700,
+    "categories": ["Jacket", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1516443841824-fb25e5ae1f5d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "運動鞋",
+    "rate": 0,
+    "description": "這是一雙舒適的運動鞋，適合各種運動場合穿著，質料優質，適合春秋季節穿著。",
+    "price": 900,
+    "categories": ["Shoes", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1543893415-3e0355233c6b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "運動背心",
+    "rate": 0,
+    "description": "這是一件時尚的運動背心，適合各種運動場合穿著，質料舒適，適合夏季穿著。",
+    "price": 250,
+    "categories": ["Tank Top", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1572213286408-39d73e8a4946?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "運動手套",
+    "rate": 0,
+    "description": "這是一雙時尚的運動手套，適合各種運動場合穿著，質料舒適，適合秋冬季節穿著。",
+    "price": 150,
+    "categories": ["Accessories", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1531495959833-2bf7cbf72286?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "運動頭帶",
+    "rate": 0,
+    "description": "這是一條時尚的運動頭帶，適合各種運動場合穿著，質料舒適，適合吸汗。",
+    "price": 50,
+    "categories": ["Accessories", "Sportswear"]
+  },
+  {
+    "img": "https://images.unsplash.com/photo-1575597060892-2fc22d861f14?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "時尚眼鏡",
+    "rate": 0,
+    "description": "這是一副時尚的眼鏡，適合各種場合佩戴，質料精良，適合搭配各種服飾。",
+    "price": 400,
+    "categories": ["Accessories", "Glasses"]
   }
 ]

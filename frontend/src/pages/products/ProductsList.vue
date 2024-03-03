@@ -6,6 +6,13 @@
             </base-dialog>
         </section>
         <section>
+            <div v-if="message">
+                <base-dialog :show="true" :title="title" @close="handleMessage">
+                    {{ message }}
+                </base-dialog>
+            </div>
+        </section>
+        <section>
             <!-- <div class="controls">
                 <base-button mode="square" @click="loadProducts(true)">重新整理</base-button>
             </div> -->
@@ -14,12 +21,14 @@
             </div>
             <ul v-else-if="hasProducts">
                 <product-item v-for="prod in products" :key="prod.id" :id="prod.id" :img="prod.img" :name="prod.name"
-                    :rate="prod.rate" :description="prod.description" :price="prod.price" :categories="prod.categories"></product-item>
+                    :rate="prod.rate" :description="prod.description" :price="prod.price"
+                    :categories="prod.categories"></product-item>
             </ul>
             <h3 v-else class="no-product">尚無商品</h3>
         </section>
     </section>
 </template>
+
 <script>
 import ProductItem from '@/components/products/ProductItem.vue'
 
@@ -30,7 +39,9 @@ export default {
     data() {
         return {
             isLoading: false,
-            error: null
+            error: null,
+            message: '',
+            title: ''
         }
     },
     computed: {
@@ -53,10 +64,24 @@ export default {
         },
         handleError() {
             this.error = null;
+        },
+        handleMessage() {
+            this.message = '';
+            this.title = '';
+            this.$router.replace({ query: {} });
         }
     },
     created() {
         this.loadProducts();
+
+        if (this.$route.query.checkout) {
+            this.title = '成功';
+            this.message = '您已成功結帳';
+        }
+        else {
+            this.title = '';
+            this.message = '';
+        }
     }
 }
 </script>
@@ -68,9 +93,12 @@ ul {
     padding: 0;
     max-width: 30rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(25rem, 1fr)); /* Two columns with minimum width of 15rem */
-    gap: 1rem; /* Gap between grid items */
-    justify-content: center; /* Center the grid horizontally */
+    grid-template-columns: repeat(2, minmax(25rem, 1fr));
+    /* Two columns with minimum width of 15rem */
+    gap: 1rem;
+    /* Gap between grid items */
+    justify-content: center;
+    /* Center the grid horizontally */
 }
 
 .product-list {

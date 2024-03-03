@@ -6,7 +6,7 @@
         </div>
         <div v-else>
             <p class="cart-info">共 {{ quantity }} 件商品，總金額 {{ total }} 元</p>
-            <base-button class="checkout-btn">結帳</base-button>
+            <base-button class="checkout-btn" @click="checkout">結帳</base-button>
             <ul class="cart-items">
                 <li v-for="item in cart" :key="item.id" class="cart-item">
                     <img :src="item.img" :alt="item.name" class="item-img">
@@ -42,6 +42,9 @@ export default {
             this.$store.dispatch('cart/removeFromCart', {
                 id
             });
+        },
+        checkout() {
+            this.$router.push('/checkout');
         }
     }
 }
@@ -92,6 +95,7 @@ export default {
     width: 100px;
     height: 100px;
     margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
 }
 
@@ -115,5 +119,4 @@ export default {
 .remove-btn:hover {
     background-color: #d00;
 }
-
 </style>

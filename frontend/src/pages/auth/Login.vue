@@ -54,11 +54,14 @@ export default {
         } else if (this.$route.query.signup) {
             this.title = '註冊成功';
             this.message = '您已成功註冊';
+        } else if (this.$route.query.redirectToCheckout) {
+            this.title = '驗證錯誤';
+            this.message = '您必須先登入才能結帳';
         } else {
             this.title = '';
             this.message = '';
         }
-        
+
     },
     methods: {
         // Plan on your own for logging in and signing up.(logic)
