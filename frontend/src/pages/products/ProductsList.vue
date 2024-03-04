@@ -77,8 +77,10 @@ export default {
         if (this.$route.query.checkout) {
             this.title = '成功';
             this.message = '您已成功結帳';
-        }
-        else {
+        } else if (this.$route.query.redirectToCheckout) {
+            this.title = '購物車尚無商品';
+            this.message = '請先加入商品至購物車';
+        } else {
             this.title = '';
             this.message = '';
         }
