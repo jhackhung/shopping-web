@@ -40,6 +40,23 @@ button {
     color: #fff
 }
 
+.cancel {
+    background-color: #fff;
+    border: 1px solid #fff;
+    margin-top: 0.5rem;
+    padding: 0.75rem 4.5rem;
+    color: #363636;
+    border-radius: 10px;
+    transition-property: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+.cancel:hover {
+    background-color: #000;
+    color: #fff;
+}
+
 .square {
     border-radius: 10px;
     background-color: #484848;
