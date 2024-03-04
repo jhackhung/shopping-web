@@ -22,7 +22,7 @@
                 </ul>
                 <div class="item-details-all">
                     <h3>共 {{ quantity }} 件商品</h3>
-                    <h3>總金額： NT${{ total }}</h3>
+                    <h3>總金額： NT${{ totalSum }}</h3>
                 </div>
             </div>
             <div class="form-container">
@@ -47,6 +47,7 @@
                         </label>
                     </div>
                     <base-button type="submit">確認結帳</base-button>
+                    <base-button type="button" @click="cancelCheckout" class="cancel">取消</base-button>
                 </form>
             </div>
         </div>
@@ -64,7 +65,7 @@ export default {
         items() {
             return this.$store.getters['cart/products'];
         },
-        total() {
+        totalSum() {
             return this.$store.getters['cart/totalSum'];
         },
         quantity() {
@@ -81,8 +82,8 @@ export default {
         }
     },
     created() {
-        if (!this.user) {
-            this.$router.push({ path: '/login', query: { redirectToCheckout: true } });
+        if (this.items.length === 0) {
+            this.$router.push({ path: '/products', query: { redirectToCheckout: true } });
         }
 
         this.customerName = this.user;
@@ -95,7 +96,8 @@ export default {
                     shipping_address: this.shippingAddress,
                     payment_method: this.paymentMethod,
                     products: this.items,
-                    total: this.total
+                    total_price: this.totalSum,
+                    total_amount: this.quantity
                 }
                 this.isLoading = true;
                 await this.$store.dispatch('cart/checkout', order);
@@ -111,6 +113,9 @@ export default {
             this.title = '';
             this.message = '';
             this.$router.replace({ query: {} });
+        },
+        cancelCheckout() {
+            this.$router.push({ path: '/cart' });
         }
     }
 }

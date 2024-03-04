@@ -79,7 +79,8 @@ export default {
       const checkout = {
         user: payload.user,
         products: payload.products,
-        total: payload.total,
+        total_amount: payload.total_amount,
+        total_price: payload.total_price,
         shipping_address: payload.shipping_address,
         payment_method: payload.payment_method,
       };

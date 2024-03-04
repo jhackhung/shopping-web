@@ -15,7 +15,11 @@ const Checkout = sequelize.define("Checkout", {
     type: DataTypes.JSON,
     allowNull: false,
   },
-  total: {
+  total_amount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  total_price: {
     type: DataTypes.FLOAT,
     allowNull: false,
   },

@@ -8,7 +8,8 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
     const checkout = await Checkout.create({
       user: req.body.user,
       products: req.body.products,
-      total: req.body.total,
+      total_amount: req.body.total_amount,
+      total_price: req.body.total_price,
       shipping_address: req.body.shipping_address,
       payment_method: req.body.payment_method,
       status: req.body.status,
