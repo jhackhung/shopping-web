@@ -16,6 +16,10 @@ export default {
   components: {
     TheHeader
   },
+  created() {
+    localStorage.clear();
+    localStorage.setItem('loglevel:webpack-dev-server', 'SILENT');
+  }
 };
 </script>
 
