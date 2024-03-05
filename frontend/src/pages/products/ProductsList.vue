@@ -13,6 +13,9 @@
             </div>
         </section>
         <section>
+            <div class="search-container">
+                <input type="text" v-model="search" placeholder="搜尋商品">
+            </div>
             <!-- <div class="controls">
                 <base-button mode="square" @click="loadProducts(true)">重新整理</base-button>
             </div> -->
@@ -20,9 +23,10 @@
                 <base-spinner></base-spinner>
             </div>
             <ul v-else-if="hasProducts">
-                <product-item v-for="prod in products" :key="prod.id" :id="prod.id" :img="prod.img" :name="prod.name"
+                <product-item v-for="prod in filteredProducts" :key="prod.id" :id="prod.id" :img="prod.img" :name="prod.name"
                     :rate="prod.rate" :description="prod.description" :price="prod.price"
                     :categories="prod.categories"></product-item>
+                <h3 class="no-product" v-if="!filteredProducts.length">找不到此條件的商品</h3>
             </ul>
             <h3 v-else class="no-product">尚無商品</h3>
         </section>
@@ -41,7 +45,8 @@ export default {
             isLoading: false,
             error: null,
             message: '',
-            title: ''
+            title: '',
+            search: ''
         }
     },
     computed: {
@@ -50,6 +55,12 @@ export default {
         },
         hasProducts() {
             return !this.isLoading && this.$store.getters['prods/hasProducts'];
+        },
+        filteredProducts() {
+            if (this.search) {
+                return this.products.filter(prod => prod.name.includes(this.search));
+            }
+            return this.products;
         }
     },
     methods: {
@@ -120,4 +131,18 @@ ul {
     font-size: 16px;
     margin: 20px auto;
 }
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type=text] {
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
 </style>
