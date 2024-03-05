@@ -60,6 +60,7 @@ export default {
 
 .empty-cart {
     text-align: center;
+    margin: 11.25rem auto;
 }
 
 .cart-info {
