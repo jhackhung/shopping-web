@@ -41,6 +41,10 @@
                             <input type="radio" name="radio" id="creditCard" value="creditCard" v-model="paymentMethod">
                             <span>信用卡</span>
                         </label>
+                        <label for="creditCard-credential">
+                                <input type="text" id="creditCard-credential" placeholder="請輸入信用卡號"
+                                    v-if="paymentMethod === 'creditCard'" v-model="creditCard">
+                            </label>
                         <label for="cash" class="radio">
                             <input type="radio" name="radio" id="cash" value="cash" v-model="paymentMethod">
                             <span>現金</span>
@@ -77,6 +81,7 @@ export default {
             customerName: '',
             shippingAddress: '',
             paymentMethod: 'creditCard',
+            creditCard: '',
             user: localStorage.getItem('user'),
             isLoading: false
         }
@@ -289,4 +294,5 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
     transform: scale(1);
 }
+
 </style>
